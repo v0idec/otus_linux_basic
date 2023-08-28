@@ -10,11 +10,11 @@ function try_file {
 		do
 			if [ -f "$f" ]; then
 				rm -rf "$f"
-				echo "Bak file $f is deleted"	
+				echo "$2 file $f is deleted"	
 			fi
 		done
 	else	
-		echo "there are no bak file here"
+		echo "there are no $2 file here"
 		exit 2
 	fi
 }
@@ -27,12 +27,11 @@ fi
 
 
 if [ "$?" -eq 0 ]; then
-	echo "Check for files"
 	rem_bak="$(find "$DIR" -name "*.bak")"
 	rem_backup="$(find "$DIR" -name "*.backup")"
 	rem_tmp="$(find "$DIR" -name "*tmp")"
-	try_file "$rem_backup"
-	try_file "$rem_bak"
-	try_file "$rem_tmp"
+	try_file "$rem_backup" "Backup"
+	try_file "$rem_bak" "Bak"
+	try_file "$rem_tmp" "Tmp"
 fi 
 	
