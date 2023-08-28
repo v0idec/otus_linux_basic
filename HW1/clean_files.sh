@@ -2,7 +2,6 @@
 
 echo "Enter directory"
 read -e -p "Directory:" DIR
-#DIR="/home/apfedotkin/otus_hw/linux_basic/test_files/"
 
 
 function try_file { 	
@@ -29,9 +28,9 @@ fi
 
 if [ "$?" -eq 0 ]; then
 	echo "Check for files"
-	rem_bak="$(find $DIR -name "*.bak")"
-	rem_backup="$(find $DIR -name "*.backup")"
-	rem_tmp="$(find $DIR -name "*tmp")"
+	rem_bak="$(find "$DIR" -name "*.bak")"
+	rem_backup="$(find "$DIR" -name "*.backup")"
+	rem_tmp="$(find "$DIR" -name "*tmp")"
 	try_file "$rem_backup"
 	try_file "$rem_bak"
 	try_file "$rem_tmp"
