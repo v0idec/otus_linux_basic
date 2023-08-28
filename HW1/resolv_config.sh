@@ -6,8 +6,8 @@ DNS1="1.1.1.1"
 DNS2="8.8.8.8"
 r_conf=resolv.conf
 CUR_DNS=$(grep "nameserver" $r_conf | grep -o "[0-9]\{1,3\}.[0-9]\{1,3\}.[0-9]\{1,3\}.[0-9]\{1,3\}")
-LIST_CUR=($CUR_DNS)
-LIST_INPUT=($DNS1 $DNS2)
+LIST_CUR=("$CUR_DNS")
+LIST_INPUT=("$DNS1" "$DNS2")
 dns_qty=${#LIST_CUR[*]}
 dns_qty2=${#LIST_INPUT[*]}
 
@@ -52,7 +52,7 @@ function file_check {
 	fi
 }
 
-
+dns_nums_check "$dns_qty"
 dns_nums_check "$dns_qty2"
 check_ip_format "${LIST_INPUT[*]}"	
 file_check "$r_conf"
